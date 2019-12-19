@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Create a Hobby";
+}
+@model Hobby
+<h1>Create a Hobby. </h1>
+
+<form asp-action="Create" asp-controller="Home" method="POST">
+
+    <span asp-validation-for="Name"></span>  
+    <h4>Name of your Hobby</h4>
+    <input class="Form-Control" asp-for="Name">
+    <br>
+
+    <span asp-validation-for="Description"></span>    
+    <h4>Description:</h4>
+    <input class="Form-Control" asp-for="Description">
+    <br>
+        <br>
+    <button type="submit">Submit</button>
+</form>

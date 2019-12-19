@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@model List<Hobby> 
+    <!-- Informing this HTML document that the parameter passed to it is of type List<Wedding>-->
+
+<h1> Hobbies </h1>
+
+<Table>
+    <thead>
+        <th>Name of Hobby</th>
+        <th>Enthusiasts</th>
+    </thead>
+    <tbody>
+        <!-- Declare type, element name, where you are getting element from -->
+        @foreach(Hobby hobby in Model){
+            <tr>
+                <td> <a href="/Details/@hobby.HobbyId"> @hobby.Name </a></td>
+                <td>@hobby.HobbyLiker.Count</td>
+                    @* @if(ViewBag.Id == @hobby.hobbyOwner.UserId)
+                {
+                    <td> <a href="/deletehobby/@hobby.hobbyId">| Delete |</a></td>
+                }
+                else {
+                    bool check = true;
+                    foreach(Enthusiast enth in hobby.HobbyLiker){
+                        if(enth.UserId == ViewBag.Id){
+                            check = false;
+                        }
+                    }
+                    if(check == true){
+                        <td> <a href="/RSVPhobby/@hobby.hobbyId">| RSVP |</a></td>
+                    }
+                    else{
+                        <td> <a href="/Un-RSVPhobby/@hobby.hobbyId">| Un-RSVP |</a> </td> *@
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</Table>
+
+<div class="button">
+    <a asp-action="New" type="button">Create a Hobby</a>
+</div>

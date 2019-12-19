@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Hobby Details";
+}
+@model Hobby
+
+<div class="headder">
+    <h1> @Model.Name </h1>
+    <br>
+    <br>
+    <h3>Description</h3>
+    <br>
+    <p> @Model.Description </p>
+    <br>
+
+</div>
+<div class="leftside">
+    <h3> @Model.Name Enthusiasts</h3>
+    <hr>
+    <div class="box">
+        <table>
+        @foreach(Enthusiast liker in Model.HobbyLiker)
+            {
+                <tr>
+                    <td> @liker.User.FirstName @liker.User.LastName </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<div class="rightside">
+    <h3>Become an Enthusiast</h3>
+    <hr>
+    <div class="button">
+        <a href="/AddHobby/@Model.HobbyId">| Add to Hobbies |</a>
+    </div>
+</div>
+
+
+
+
